@@ -1,4 +1,5 @@
 import { Bot } from 'grammy'
+import { MyContext } from './bot'
 import { getScheduleForQueue } from '@/lib/scrapers/yasno-client'
 import {
   getAllActiveSubscriptions,
@@ -39,7 +40,7 @@ function formatTimeUntil(minutes: number): string {
 
 // Check and send notifications for upcoming outages
 export async function checkAndSendNotifications(
-  bot: Bot
+  bot: Bot<MyContext>
 ): Promise<NotificationResult> {
   if (!isDatabaseAvailable()) {
     console.log('Database not available - skipping notifications')
@@ -150,7 +151,7 @@ export async function checkAndSendNotifications(
 
 // Send immediate status update to a user
 export async function sendStatusUpdate(
-  bot: Bot,
+  bot: Bot<MyContext>,
   telegramId: string,
   operatorCode: string,
   queueNumber: string

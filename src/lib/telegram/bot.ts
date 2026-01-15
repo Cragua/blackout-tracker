@@ -15,7 +15,7 @@ interface SessionData {
   notifyBefore?: number // minutes before outage
 }
 
-type MyContext = Context & SessionFlavor<SessionData>
+export type MyContext = Context & SessionFlavor<SessionData>
 
 // Ukrainian month names
 const MONTHS_UK = [
